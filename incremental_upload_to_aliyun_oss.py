@@ -30,7 +30,7 @@ def upload_file_to_aliyun_oss(local_file_path):
     local_file_md5 = content_md5(local_file_path)
     exist = bucket.object_exists(oss_object_key)
     if exist:
-        oss_file_head = requests.head("http://" + oss_public_domain + "/" + oss_object_key)
+        oss_file_head = requests.head("https://" + oss_public_domain + "/" + oss_object_key)
         if local_file_md5 == oss_file_head.headers["Content-MD5"]:
             return
 
