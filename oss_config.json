@@ -1,6 +1,6 @@
 {
-  "accessKeyId": "",
-  "accessKeySecret": "",
+  "accessKeyId": "test",
+  "accessKeySecret": "test",
   "endpoint": "",
   "bucketName": "",
   "ossDomain": "",

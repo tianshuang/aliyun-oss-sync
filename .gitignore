@@ -5,3 +5,7 @@ oss_config.json
 # OS generated files #
 ######################
 .DS_Store
+
+# PyCharm generated files #
+######################
+.idea/
