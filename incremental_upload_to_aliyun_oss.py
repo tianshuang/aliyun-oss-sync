@@ -42,6 +42,7 @@ def upload_file_to_aliyun_oss(local_file_path):
             exit(1)
 
 
-for dirpath, dirnames, filenames in os.walk(local_dir):
-    for filename in filenames:
-        upload_file_to_aliyun_oss(os.path.join(dirpath, filename))
+if __name__ == '__main__':
+    for dirpath, dirnames, filenames in os.walk(local_dir):
+        for filename in filenames:
+            upload_file_to_aliyun_oss(os.path.join(dirpath, filename))
