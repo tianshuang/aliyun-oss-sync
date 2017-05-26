@@ -21,6 +21,8 @@ def content_md5(local_file_path):
 def upload_file_to_aliyun_oss(local_file_path):
     if local_file_path.endswith('.DS_Store'):
         return
+    if is_windows:
+        local_file_path = local_file_path.replace('\\', '/')
     oss_object_key = local_file_path[local_dir.__len__():]
     local_file_md5 = content_md5(local_file_path)
     exist = bucket.object_exists(oss_object_key)
@@ -55,6 +57,10 @@ if __name__ == '__main__':
             raise ValueError('No localDir in oss_config.json')
         if not str(oss_config['localDir']).strip().endswith('/'):
             raise ValueError('localDir must end with a slash, example: /Users/Poison/blog/public/')
+
+    is_windows = False
+    if os.name == 'nt':
+        is_windows = True
 
     auth = oss2.Auth(oss_config['accessKeyId'], oss_config['accessKeySecret'])
     bucket = oss2.Bucket(auth, oss_config['endpoint'], oss_config['bucketName'])
